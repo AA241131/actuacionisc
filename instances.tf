@@ -32,7 +32,8 @@ resource "aws_instance" "ac2-instance" {
 
   provisioner "remote-exec" {
     inline = [
-      "sudo yum install httpd git curl",
+      "sudo yum install httpd -y",
+      "sudo yum install git -y",
       "git clone https://github.com/mauricioamendola/chaos-monkey-app.git",
       "sudo mv chaos-monkey-app/website/* /var/www/html/",
       "sudo systemctl enable httpd",
