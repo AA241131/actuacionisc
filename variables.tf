@@ -38,17 +38,17 @@ variable "ingress_rules" {
   }
 }
 output "ec2-id" {
-  value = aws_instance.ac1-instance.id
+  value = aws_instance.ac2-instance.id
 }
 
 output "ec2-dns" {
-  value = aws_instance.ac1-instance.public_dns
+  value = aws_instance.ac2-instance.public_dns
 }
 
 output "ec2-public-ip" {
-  value = aws_instance.ac1-instance.public_ip
+  value = aws_instance.ac2-instance.public_ip
 }
 
 output "lb-ip" {
-  value = aws_lb.ac1-lb.dns_name
+  value = aws_lb.ac2-lb.dns_name
 }
