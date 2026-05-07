@@ -15,7 +15,7 @@ data "aws_ami" "al2023_x86" {
 resource "aws_instance" "ac1-instance" {
   ami             = data.aws_ami.al2023_x86.image_id
   instance_type   = "t2.micro"
-  security_groups = "aws_security_group.ac1-sg.id"
+  vpc_security_group_ids = [ aws_security_group.ac1-sg.id ]
   key_name        = "vockey"
   tags = {
     Name      = "ac1-instance"
