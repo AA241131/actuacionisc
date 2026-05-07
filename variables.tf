@@ -11,15 +11,17 @@ variable "vpc_cidr" {
   type = string
 }
 
-variable "private_subnet" {
+variable "public_subnet-1" {
   type = string
+  description = "subnet conectada a la instancia y al load balancer"
 }
 
-variable "private_subnet-2" {
+variable "public_subnet-2" {
   type = string
+  description = "subnet conectada al load balancer y al igw"
 }
 
-variable "vpc_aws_az" {
+variable "vpc_aws_az-1" {
   default = "us-east-1a"
 }
 

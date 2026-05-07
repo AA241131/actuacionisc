@@ -1,7 +1,7 @@
-resource "aws_security_group" "ac1-sg" {
+resource "aws_security_group" "ac2-sg" {
   description = "Security Group de la instancia"
-  name   = "terraform-ac1-sg"
-  vpc_id = aws_vpc.vpc-ac1.id
+  name   = "terraform-ac2-sg"
+  vpc_id = aws_vpc.vpc-ac2.id
 
   dynamic "ingress" {
     for_each = var.ingress_rules
@@ -27,8 +27,9 @@ resource "aws_security_group" "ac1-sg" {
 }
 
 resource "aws_security_group" "ac1-lb-sg" {
-  name   = "terraform-ac1-lb-sg"
-  vpc_id = aws_vpc.vpc-ac1.id
+  description = "Security Group del load balancer"
+  name   = "terraform-ac2-lb-sg"
+  vpc_id = aws_vpc.vpc-ac2.id
   ingress {
     from_port = 80
     to_port   = 80
@@ -42,6 +43,6 @@ resource "aws_security_group" "ac1-lb-sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
   tags = {
-    Name = "terraform-ac1-lb-sg"
+    Name = "terraform-ac2-lb-sg"
   }
 }
