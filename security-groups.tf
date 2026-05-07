@@ -26,7 +26,7 @@ resource "aws_security_group" "ac2-sg" {
   }
 }
 
-resource "aws_security_group" "ac1-lb-sg" {
+resource "aws_security_group" "ac2-lb-sg" {
   description = "Security Group del load balancer"
   name   = "terraform-ac2-lb-sg"
   vpc_id = aws_vpc.vpc-ac2.id
