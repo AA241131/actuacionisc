@@ -12,7 +12,7 @@ resource "aws_alb_target_group_attachment" "ac1-tg-attachment" {
   port             = 80
 }
 
-resource "aws_alb_target_group_attachment" "ac1-tg-attachment" {
+resource "aws_alb_target_group_attachment" "ac2-tg-attachment" {
   target_group_arn = aws_lb_target_group.ac1-tg.arn
   target_id        = aws_instance.ac2-instance.id
   port             = 80
