@@ -13,7 +13,7 @@ data "aws_ami" "al2023_x86" {
   }
 }
 resource "aws_instance" "ac1-instance" {
-  ami             = var.aws_ami.id
+  ami             = data.aws_ami.al2023_x86.image_id
   instance_type   = "t2.micro"
   security_groups = "aws_security_group.ac1-sg.id"
   key_name        = "vockey"
@@ -25,7 +25,7 @@ resource "aws_instance" "ac1-instance" {
   connection {
     type        = "ssh"
     user        = "ec2-user"
-    private_key = file("/home/ec2-user/repositorio/actuacionisc/labsuser.pem")
+    private_key = file("/home/ec2-user/actuacionisc/labsuser.pem")
     host        = self.public_ip
   }
 

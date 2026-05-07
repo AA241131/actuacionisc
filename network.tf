@@ -33,13 +33,6 @@ resource "aws_internet_gateway" "ac1-gw" {
   }
 }
 
-resource "aws_internet_gateway" "ac1-gw" {
-  vpc_id = aws_vpc.vpc-ac1.id
-  tags = {
-    Name = "terraform-ac1-gw"
-  }
-}
-
 resource "aws_route_table" "ac1_route_table" {
   vpc_id = aws_vpc.vpc-ac1.id
   route {
