@@ -1,7 +1,0 @@
-perfil         = ""
-region         = ""
-vpc_cidr       = ""
-private_subnet = ""
-vpc_aws_az     = ""
-private_subnet-2 = ""
-vpc_aws_az-2     = ""

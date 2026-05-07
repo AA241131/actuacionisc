@@ -1,4 +1,10 @@
 variable "perfil" {
+  type = string
+}
+
+variable "region" {
+  type = string
+  default = "us-east-1"
 }
 
 variable "vpc_cidr" {
@@ -26,7 +32,7 @@ variable "ingress_rules" {
   type        = map(number)
   default = {
     "Allow SSH"  = 22
-    "Allow HTTP" = 88
+    "Allow HTTP" = 80
   }
 }
 output "ec2-id" {
