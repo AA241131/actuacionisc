@@ -8,7 +8,7 @@ resource "aws_vpc" "vpc-ac2" {
   }
 }
 
-resource "aws_subnet" "ac2-private-subnet" {
+resource "aws_subnet" "ac2-public-subnet-1" {
   vpc_id                  = aws_vpc.vpc-ac2.id
   cidr_block              = var.public_subnet-1
   availability_zone       = var.vpc_aws_az-1
@@ -17,7 +17,7 @@ resource "aws_subnet" "ac2-private-subnet" {
     Name = "terraform-ac2-public-subnet-1"
   }
 }
-resource "aws_subnet" "ac2-public-subnet" {
+resource "aws_subnet" "ac2-public-subnet-2" {
   vpc_id                  = aws_vpc.vpc-ac2.id
   cidr_block              = var.public_subnet-2
   availability_zone       = var.vpc_aws_az-2
