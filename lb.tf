@@ -26,7 +26,7 @@ resource "aws_lb" "ac2-lb" {
   }
 }
 
-resource "aws_lb_listener" "ac1-listener" {
+resource "aws_lb_listener" "ac2-listener" {
   load_balancer_arn = aws_lb.ac2-lb.arn
   port              = "80"
   protocol          = "HTTP"
