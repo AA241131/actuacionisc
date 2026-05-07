@@ -1,0 +1,41 @@
+data "aws_ami" "al2023_x86" {
+  most_recent = true
+  owners      = ["amazon"]
+
+  filter {
+    name   = "name"
+    values = ["al2023-ami-2023*"]
+  }
+
+  filter {
+    name   = "architecture"
+    values = ["x86_64"]
+  }
+}
+resource "aws_instance" "ac1-instance" {
+  ami             = var.aws_ami
+  instance_type   = "t2.micro"
+  security_groups = "aws_security_group.ac1-sg.id"
+  key_name        = "vockey"
+  tags = {
+    Name      = "ac1-instance"
+    terraform = "True"
+
+  }
+  connection {
+    type        = "ssh"
+    user        = "ec2-user"
+    private_key = file("~/Documents/ORT/labsuser.cer")
+    host        = self.public_ip
+  }
+  provisioner "remote-exec" {
+    inline = [
+      "sudo yum install httpd git curl",
+      "git clone https://github.com/mauricioamendola/chaos-monkey-app.git",
+      "sudo mv chaos-monkey-app/website/* /var/www/html/",
+      "sudo systemctl enable httpd",
+      "sudo systemctl start httpd",
+      "sudo poweroff",
+    ]
+  }
+}
